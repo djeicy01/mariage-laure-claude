@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Localisation – Mariage Laure & Claude</title>
+  <meta name="description" content="Localisation de la réception du mariage de Laure & Claude : Google Maps ou Yango." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <div class="doves" aria-hidden="true">🕊️ 💍 🕊️</div>
+
+      <p class="date">05 septembre 2026</p>
+      <h1>Laure &amp; Claude</h1>
+      <p class="slogan">Deux « Oui » pour un Nom.</p>
+
+      <div class="separator"></div>
+
+      <h2>Localisation de la réception</h2>
+      <p class="place">
+        <strong>Résidence Helma</strong><br>
+        Angré Château Extension<br>
+        Abidjan, Côte d'Ivoire
+      </p>
+
+      <p class="help">
+        Choisissez l'application qui vous convient pour rejoindre facilement la réception.
+      </p>
+
+      <a class="btn btn-google" href="https://maps.app.goo.gl/7Yuus4hFt3Fbf6jM7" target="_blank" rel="noopener">
+        Voir l'itinéraire sur Google Maps
+      </a>
+
+      <a class="btn btn-yango" href="https://yango.com/fr_ci/order/" target="_blank" rel="noopener" id="yangoBtn">
+        Commander un Yango vers la réception
+      </a>
+
+      <p class="note">
+        Pour Yango, l'adresse de destination sera copiée automatiquement :
+        <br><strong>Résidence Helma, Angré Château Extension, Abidjan</strong>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const destination = "Résidence Helma, Angré Château Extension, Abidjan";
+    document.getElementById("yangoBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(destination);
+      } catch (e) {}
+    });
+  </script>
+</body>
+</html>
