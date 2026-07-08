@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Localisation – Mariage Laure & Claude</title>
-  <meta name="description" content="Localisation de la réception du mariage de Laure & Claude : Google Maps ou Yango." />
+  <meta name="description" content="Localisation de la réception du mariage de Laure & Claude : Google Maps et Yango." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="page">
     <section class="card">
-      <div class="doves" aria-hidden="true">🕊️ 💍 🕊️</div>
+      <img class="wedding-icon" src="icone-colombes-alliances.png" alt="Deux colombes tenant les alliances" />
 
       <p class="date">05 septembre 2026</p>
       <h1>Laure &amp; Claude</h1>
@@ -26,30 +26,50 @@
       </p>
 
       <p class="help">
-        Choisissez l'application qui vous convient pour rejoindre facilement la réception.
+        Choisissez votre option pour rejoindre facilement la réception.
       </p>
 
       <a class="btn btn-google" href="https://maps.app.goo.gl/7Yuus4hFt3Fbf6jM7" target="_blank" rel="noopener">
         Voir l'itinéraire sur Google Maps
       </a>
 
-      <a class="btn btn-yango" href="https://yango.com/fr_ci/order/" target="_blank" rel="noopener" id="yangoBtn">
-        Commander un Yango vers la réception
-      </a>
+      <div class="yango-zone">
+        <p class="yango-title">Commander avec Yango</p>
 
-      <p class="note">
-        Pour Yango, l'adresse de destination sera copiée automatiquement :
-        <br><strong>Résidence Helma, Angré Château Extension, Abidjan</strong>
+        <div class="ya-taxi-widget"
+          data-ref="mariage-laure-claude"
+          data-size="s"
+          data-theme="action"
+          data-title="Commander un Yango"
+          data-description="Résidence Helma – Angré Château Extension"
+          data-use-location="true"
+          data-app="2187871"
+          data-lang="fr"
+          data-point-b="-3.979251,5.422945"
+          data-proxy-url="https://yango.go.link/route?start-lat={start-lat}&start-lon={start-lon}&end-lat={end-lat}&end-lon={end-lon}&adj_adgroup=widget&ref={ref}&adj_t=vokme8e_nd9s9z9&lang=fr&adj_deeplink_js=1&utm_source=widget&adj_fallback=https%3A%2F%2Fyango.com%2Ffr_ci%2Forder%2F%3Fgfrom%3D{start-lon}%2C{start-lat}%26gto%3D{end-lon}%2C{end-lat}%26ref%3D{ref}">
+        </div>
+      </div>
+
+      <button class="copy-btn" id="copyAddress" type="button">
+        Copier l'adresse
+      </button>
+
+      <p class="note" id="copyStatus">
+        Résidence Helma, Angré Château Extension, Abidjan, Côte d'Ivoire
       </p>
     </section>
   </main>
 
+  <script src="//yastatic.net/taxi-widget/ya-taxi-widget.js" charset="UTF-8"></script>
   <script>
-    const destination = "Résidence Helma, Angré Château Extension, Abidjan";
-    document.getElementById("yangoBtn").addEventListener("click", async () => {
+    const address = "Résidence Helma, Angré Château Extension, Abidjan, Côte d'Ivoire";
+    document.getElementById("copyAddress").addEventListener("click", async () => {
       try {
-        await navigator.clipboard.writeText(destination);
-      } catch (e) {}
+        await navigator.clipboard.writeText(address);
+        document.getElementById("copyStatus").textContent = "Adresse copiée : " + address;
+      } catch (e) {
+        document.getElementById("copyStatus").textContent = address;
+      }
     });
   </script>
 </body>
